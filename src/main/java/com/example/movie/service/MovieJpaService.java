@@ -1,12 +1,27 @@
-/*
- * You can use the following import statements
- * 
- * import org.springframework.beans.factory.annotation.Autowired;
- * import org.springframework.http.HttpStatus;
- * import org.springframework.stereotype.Service;
- * import org.springframework.web.server.ResponseStatusException;
- * import java.util.*;
- *
- */
+package com.example.movie.service;
 
-// Write your code here
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
+
+import com.example.movie.model.Movie;
+import com.example.movie.repository.MovieRepository;
+import com.example.movie.repository.MovieJpaRepository;
+import java.util.*;
+
+@Service
+public class MovieJpaService implements MovieRepository {
+
+    private final MovieJpaRepository movieJpaRepository;
+
+    @Autowired
+    public MovieJpaService(MovieJpaRepository movieJpaRepository) {
+        this.movieJpaRepository = movieJpaRepository;
+    }
+
+    @Override
+    public List<Movie> getMovies() {
+        return new ArrayList<>(movieJpaRepository.findAll());
+    }
+}

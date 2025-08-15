@@ -1,10 +1,19 @@
-/*
- * You can use the following import statements
- *
- * import org.springframework.beans.factory.annotation.Autowired;
- * import org.springframework.web.bind.annotation.*;
- * import java.util.*;
- * 
- */
+package com.example.movie.controller;
 
-// Write your code here
+import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.*;
+
+import com.example.movie.service.MovieJpaService;
+import com.example.movie.model.Movie;
+
+@RestController
+public class MovieController{
+    @Autowired
+    public MovieJpaService service;
+
+    @GetMapping("/movies")
+    public List<Movie> getMovies(){
+        return service.getMovies();
+    }
+}
