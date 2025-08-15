@@ -47,4 +47,12 @@ public class MovieJpaService implements MovieRepository {
         }
         return movieJpaRepository.save(current);
     }
+
+    @Override
+    public void deleteMovie(int movieId){
+        if(!movieJpaRepository.existsById(movieId)){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        movieJpaRepository.deleteById(movieId);
+    }
 }
