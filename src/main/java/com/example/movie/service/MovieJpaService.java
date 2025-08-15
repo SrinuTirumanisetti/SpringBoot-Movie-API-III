@@ -24,4 +24,9 @@ public class MovieJpaService implements MovieRepository {
     public List<Movie> getMovies() {
         return new ArrayList<>(movieJpaRepository.findAll());
     }
+
+    @Override
+    public Movie addMovie(Movie movie){
+        return movieJpaRepository.save(movie);
+    }
 }

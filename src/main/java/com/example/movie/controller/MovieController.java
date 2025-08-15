@@ -16,4 +16,9 @@ public class MovieController{
     public List<Movie> getMovies(){
         return service.getMovies();
     }
+
+    @PostMapping("/movies")
+    public Movie addMovie(@RequestBody Movie movie){
+        return service.addMovie(movie);
+    }
 }
