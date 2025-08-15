@@ -21,4 +21,9 @@ public class MovieController{
     public Movie addMovie(@RequestBody Movie movie){
         return service.addMovie(movie);
     }
+
+    @GetMapping("/movies/{movieId}")
+    public Movie getMovieById(@PathVariable("movieId") int movieId){
+        return service.getMovieById(movieId);
+    }
 }

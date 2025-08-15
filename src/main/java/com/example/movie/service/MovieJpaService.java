@@ -29,4 +29,10 @@ public class MovieJpaService implements MovieRepository {
     public Movie addMovie(Movie movie){
         return movieJpaRepository.save(movie);
     }
+
+    @Override
+    public Movie getMovieById(int movieId){
+        return movieJpaRepository.findById(movieId)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
+    }
 }
