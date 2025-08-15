@@ -7,4 +7,5 @@ public interface MovieRepository{
     List<Movie> getMovies();
     Movie addMovie(Movie movie);
     Movie getMovieById(int movieId);
+    Movie updateMovie(int movieId,Movie movie);
 }

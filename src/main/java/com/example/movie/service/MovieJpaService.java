@@ -35,4 +35,16 @@ public class MovieJpaService implements MovieRepository {
         return movieJpaRepository.findById(movieId)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
     }
+
+    @Override
+    public Movie updateMovie(int movieId,Movie movie){
+        Movie current = getMovieById(movieId);
+        if(movie.getMovieName()!=null){
+            current.setMovieName(movie.getMovieName());
+        }
+        if(movie.getLeadActor()!=null){
+            current.setLeadActor(movie.getLeadActor());
+        }
+        return movieJpaRepository.save(current);
+    }
 }

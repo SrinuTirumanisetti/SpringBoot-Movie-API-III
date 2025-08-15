@@ -26,4 +26,9 @@ public class MovieController{
     public Movie getMovieById(@PathVariable("movieId") int movieId){
         return service.getMovieById(movieId);
     }
+
+    @PutMapping("/movies/{movieId}")
+    public Movie updateMovie(@PathVariable("movieId") int movieId,@RequestBody Movie movie){
+        return service.updateMovie(movieId,movie);
+    }
 }
